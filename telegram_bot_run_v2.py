@@ -59,7 +59,7 @@ async def message_handler(update: Update, context: CallbackContext) -> None:
         # If inactive for more than 30 minutes, create a new session
         if (current_time - last_interaction) > SESSION_TIMEOUT:
             user_sessions[chat_id]['session_id'] = generate_session()
-            await context.bot.send_message(chat_id=chat_id, text="Your session expired. A new session has been assigned. 🔄", parse_mode="Markdown")
+            await context.bot.send_message(chat_id=chat_id, text="Your session expired. A new session has started. 🔄", parse_mode="Markdown")
 
         user_sessions[chat_id]['last_time'] = current_time  # Update last interaction time
     else:
@@ -68,7 +68,7 @@ async def message_handler(update: Update, context: CallbackContext) -> None:
             'session_id': generate_session(),
             'last_time': current_time
         }
-        await context.bot.send_message(chat_id=chat_id, text="New session assigned! 🎯", parse_mode="Markdown")
+        await context.bot.send_message(chat_id=chat_id, text="New session started! 🎯", parse_mode="Markdown")
     
     await update.message.reply_text(f"Please give me a second to process ⏳...")
     await context.bot.send_chat_action(chat_id=chat_id, action=ChatAction.TYPING)
