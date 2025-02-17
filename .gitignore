@@ -1,0 +1,11 @@
+.DS_Store
+.env
+.milvus_example.db.lock
+__pycache__/
+downloaded_pdfs/
+renamed_pdfs/
+docs/
+chroma/
+bibtex/
+milvus_example.db
+milvus_vector_database_0215.db
